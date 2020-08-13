@@ -1,4 +1,4 @@
-from flask_docker import __version__
+from server import __version__
 
 
 def test_version():
