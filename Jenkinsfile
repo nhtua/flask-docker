@@ -2,7 +2,11 @@ pipeline {
   agent any
   stages {
     stage("Test") {
-      agent { docker "python:3.8-slim-buster" }
+      agent {
+        docker {
+          image "python:3.8-slim-buster"
+        }
+      }
       steps {
         sh "poetry install"
         sh "poetry run pytest"
