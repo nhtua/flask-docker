@@ -1,11 +1,9 @@
 pipeline {
-  agent { label "docker-agent"}
+  agent none
   stages {
     stage("Test") {
       agent {
-        docker {
-          image "python:3.8-slim-buster"
-        }
+          docker { image 'python:3.8-slim-buster' }
       }
       steps {
         sh "poetry install"
@@ -13,6 +11,7 @@ pipeline {
       }
     }
     stage("build") {
+      agent { label "docker-agent"}
       steps {
         sh "echo BUILDING IMAGE..."
       }
