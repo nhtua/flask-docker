@@ -10,7 +10,7 @@ pipeline {
           docker { image 'python:3.8-slim-buster' }
       }
       steps {
-        sh "pip install --user poetry"
+        sh "pip install poetry"
         sh "poetry install"
         sh "poetry run pytest"
       }
