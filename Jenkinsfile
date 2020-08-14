@@ -13,14 +13,13 @@ pipeline {
           }
       }
       steps {
-        sh 'export PATH=$PATH:/root/.local/bin'
-        sh "pip install --user poetry"
+        sh "pip install poetry"
         sh "poetry install"
         sh "poetry run pytest"
       }
     }
     stage("build") {
-      agent { label "docker-agent"}
+      agent { node {label 'master'}}
       steps {
         sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} . "
         sh "docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
