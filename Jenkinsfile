@@ -9,7 +9,7 @@ pipeline {
       agent {
           docker {
             image 'python:3.8-slim-buster'
-            args '-u 0:0'
+            args '-u 0:0 -v /home/jenkins/temp:/root/.cache/pip'
           }
       }
       steps {
