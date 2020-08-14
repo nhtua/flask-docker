@@ -1,4 +1,5 @@
 pipeline {
+  agent any
   stages {
     stage("Test") {
       agent { docker "python:3.8-slim-buster" }
@@ -9,7 +10,9 @@ pipeline {
     }
     stage("build") {
       agent{ label 'docker-agent' }
-      sh "echo BUILDING IMAGE..."
+      steps {
+        sh "echo BUILDING IMAGE..."
+      }
     }
   }
 }
