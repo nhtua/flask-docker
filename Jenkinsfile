@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent { label "docker-agent"}
   stages {
     stage("Test") {
       agent {
@@ -13,7 +13,6 @@ pipeline {
       }
     }
     stage("build") {
-      agent{ label 'docker-agent' }
       steps {
         sh "echo BUILDING IMAGE..."
       }
