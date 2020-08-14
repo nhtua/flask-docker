@@ -7,10 +7,14 @@ pipeline {
   stages {
     stage("Test") {
       agent {
-          docker { image 'python:3.8-slim-buster' }
+          docker {
+            image 'python:3.8-slim-buster'
+            args '-u 0:0'
+          }
       }
       steps {
-        sh "pip install --no-cache-dir --user poetry"
+        sh 'export PATH=$PATH:/root/.local/bin'
+        sh "pip install --user poetry"
         sh "poetry install"
         sh "poetry run pytest"
       }
