@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} . "
         sh "docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
-        sh "docker images ls | grep ${DOCKER_IMAGE}"
+        sh "docker image ls | grep ${DOCKER_IMAGE}"
       }
     }
   }
