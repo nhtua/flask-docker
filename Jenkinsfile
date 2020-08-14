@@ -10,7 +10,8 @@ pipeline {
           docker { image 'python:3.8-slim-buster' }
       }
       steps {
-        sh "sudo pip install --user poetry"
+        sh "mkdir -p /home/jenkins && usermod -d /home/jenkins jenkins"
+        sh "pip install --user poetry"
         sh "poetry install"
         sh "poetry run pytest"
       }
