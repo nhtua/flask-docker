@@ -1,4 +1,5 @@
 pipeline {
+  
   agent none
 
   environment {
@@ -19,7 +20,7 @@ pipeline {
         sh "poetry run pytest"
       }
     }
-    
+
     stage("build") {
       agent { node {label 'master'}}
       environment {
