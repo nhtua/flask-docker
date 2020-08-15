@@ -39,6 +39,7 @@ pipeline {
 
   post {
     always {
+      agent { node {label 'master'}}
       deleteDir() /* clean up our workspace */
       sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
       sh "docker image rm ${DOCKER_IMAGE}:latest"
