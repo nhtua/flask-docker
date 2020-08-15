@@ -13,6 +13,7 @@ def test_dummy():
     assert 2 * 2 == 4
     assert 2 - 2 == 0
     assert 3 * 3 == 9
+    assert 4 + 4 == 8
 
 def test_version():
     assert __version__ == '0.1.0'
