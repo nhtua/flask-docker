@@ -19,6 +19,7 @@ pipeline {
         sh "poetry run pytest"
       }
     }
+    
     stage("build") {
       agent { node {label 'master'}}
       environment {
