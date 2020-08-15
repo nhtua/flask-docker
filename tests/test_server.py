@@ -10,6 +10,7 @@ def client():
 def test_dummy():
     assert 2 * 3 == 6
     assert 2 + 3 == 5
+    assert 2 * 2 == 4
 
 def test_version():
     assert __version__ == '0.1.0'
