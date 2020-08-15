@@ -35,15 +35,17 @@ pipeline {
             sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             sh "docker push ${DOCKER_IMAGE}:latest"
         }
-        sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
-        sh "docker image rm ${DOCKER_IMAGE}:latest"
       }
     }
   }
 
   post {
     always {
-      deleteDir() /* clean up our workspace */
+      node('master') {
+        deleteDir() /* clean up our workspace */
+        sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
+        sh "docker image rm ${DOCKER_IMAGE}:latest"
+      }
     }
     success {
       echo "SUCCESSFUL"
