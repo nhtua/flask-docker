@@ -5,3 +5,6 @@ def test_dummy2():
 def test_dummy3():
     assert "abc" != "def"
     assert "xyz" != "def"
+
+def test_cal():
+    assert 1+1 == 2
