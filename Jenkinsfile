@@ -1,4 +1,5 @@
 pipeline {
+
   agent none
 
   environment {
@@ -19,10 +20,11 @@ pipeline {
         sh "poetry run pytest"
       }
     }
+
     stage("build") {
       agent { node {label 'master'}}
       environment {
-        DOCKER_TAG="master-${GIT_COMMIT.substring(0,7)}"
+        DOCKER_TAG="${GIT_BRANCH}-${GIT_COMMIT.substring(0,7)}"
       }
       steps {
         sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
@@ -39,7 +41,7 @@ pipeline {
 
   post {
     always {
-      node {label 'master'}
+      agent {label 'master'}
       deleteDir() /* clean up our workspace */
       sh "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
       sh "docker image rm ${DOCKER_IMAGE}:latest"
