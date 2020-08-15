@@ -41,15 +41,4 @@ pipeline {
     // }
   }
 
-  post {
-    always {
-      deleteDir() /* clean up our workspace */
-    }
-    success {
-      echo "SUCCESSFUL"
-    }
-    failure {
-      echo "FAILED"
-    }
-  }
 }
