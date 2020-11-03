@@ -2,4 +2,4 @@ apiVersion: v2
 name: flash-docker
 description: A helm chart for demo Flask in Docker
 version: latest
-appVersion: 1.0.0
+appVersion: 1.0.1
