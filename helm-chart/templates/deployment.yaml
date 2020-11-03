@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels: {{ include "common.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels: {{ include "common.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{ include "common.labels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: flask-docker-demo
+        image: {{ .Values.image }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.targetPort }}
