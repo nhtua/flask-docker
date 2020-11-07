@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Docker lives in K8s</title>
+    <style media="screen">
+      body {
+        background: rgb(0,86,0);
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+      .info-box {
+        border: 2px green solid;
+        width: 480px;
+        margin: 10% auto;
+        color: white;
+        background: rgba(255,255,255,0.1);
+        text-align: center;
+        padding: 60px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info-box">
+      <h2>Your IP: {{ info.your_ip }}</h2>
+      <h3>Your servant: {{  info.hostname }}</h3>
+    </div>
+  </body>
+</html>
