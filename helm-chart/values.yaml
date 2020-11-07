@@ -5,5 +5,5 @@ replicaCount: 1
 service:
   type: ClusterIP
   port: 3200
-  targetPort: 3000
+  targetPort: 5000
   nodePort: 30200
