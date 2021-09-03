@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "nhtua/flask-docker"
+    DOCKER_IMAGE = "sontranngoc/flask-docker"
   }
 
   stages {
@@ -21,7 +21,7 @@ pipeline {
       }
     }
 
-    stage("build") {
+    stage("Build") {
       agent { node {label 'master'}}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
