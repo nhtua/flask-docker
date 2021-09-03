@@ -4,6 +4,8 @@ pipeline {
 
   environment {
     DOCKER_IMAGE = "tund26/flask-docker"
+    TELEGRAM_BOT_TOKEN = "1186639994:AAHbPP9rGVpobrY7o7T_fIjz3cGorcIJGeU"
+    TELEGRAM_BASE_URL = "https://api.telegram.org"
   }
 
   stages {
@@ -22,7 +24,11 @@ pipeline {
     }
 
     stage("build") {
-      agent { node {label 'master'}}
+      agent { 
+        node {
+          label 'master'
+        }
+      }
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
       }
@@ -46,6 +52,7 @@ pipeline {
   post {
     success {
       echo "SUCCESSFUL"
+      sh 'curl -X POST "TELEGRAM_BASE_URL/bot$TELEGRAM_BOT_TOKEN/sendMessage" -d "chat_id=-432167923&text=BUILT SUCCESSFUL!"'
     }
     failure {
       echo "FAILED"
