@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "nhtua/flask-docker"
+    DOCKER_IMAGE = "lampt/flask-docker"
   }
 
   stages {
@@ -27,7 +27,7 @@ pipeline {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${BUILD_NUMBER}-${GIT_COMMIT.substring(0,7)}"
       }
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-lampt', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
         }
 
