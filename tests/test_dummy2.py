@@ -10,5 +10,4 @@ def test_cal():
     assert 1+1 == 2
 
 def test_new():
-    assert 9 + 9==18
-
+    assert 9 +7==16
