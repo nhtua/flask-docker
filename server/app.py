@@ -17,7 +17,7 @@ def hello():
 
 @app.route('/sum/<int:a>/<int:b>')
 def sum(a,b):
-    return str(a/b)
+    return str(a+b)
 
 
 @app.route('/multiply/<int:a>/<int:b>')
