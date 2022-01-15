@@ -45,7 +45,7 @@ pipeline {
 
   post {
     success {
-      echo "SUCCESSFUL, GREAT JOB, PULL REQUEST aaabbb"
+      echo "SUCCESSFUL, GREAT JOB, PULL REQUEST aaa bbb"
     }
     failure {
       echo "FAILED"
