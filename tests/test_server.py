@@ -19,7 +19,6 @@ def test_version():
 def test_home_page(client):
     res = client.get('/')
     assert "200 OK"         in res.status
-    assert b"_home page_"   in res.data
 
 def test_hello_page(client):
     res = client.get('/hello')
