@@ -8,3 +8,6 @@ def test_dummy3():
 
 def test_cal():
     assert 1+1 == 2
+
+def test_new():
+    assert 9 +7==16
