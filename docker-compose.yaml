@@ -1,6 +1,6 @@
 version: "3.3"
 services:
   flask-app:
-    image: nhtua/flask-docker:latest
+    image: tamhocaws/flask-app:latest
     ports:
       - "5000:5000"
